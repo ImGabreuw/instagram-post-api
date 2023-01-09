@@ -1,6 +1,7 @@
 import puppeteer from 'puppeteer';
 import { InstagramPostDTO } from '../controllers/dto/instagram-post-dto';
 import { PuppeteerHelper } from '../helpers/puppeteer-helper';
+import { PostNotFoundError } from './errors/post-not-found-error';
 
 export class InstagramService {
   async extractLastPost(username: string): Promise<InstagramPostDTO> {
@@ -13,7 +14,7 @@ export class InstagramService {
     const isLastPostNotFound = !(await PuppeteerHelper.isElementExists(page, lastPostSelector));
 
     if (isLastPostNotFound) {
-      throw new Error("post not found");
+      throw new PostNotFoundError();
     }
 
     const post = await PuppeteerHelper.extractImgSrcFrom(page, lastPostSelector) as string;
