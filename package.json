@@ -1,15 +1,23 @@
 {
-  "name": "web-scrapping-puppeteerjs",
+  "name": "instagram-post-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/server.ts",
   "scripts": {
-    "start": "node index.js"
+    "start:dev": "ts-node-dev --respawn --transpile-only ./src/server.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
     "puppeteer": "^15.4.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.15",
+    "@types/puppeteer": "^7.0.4",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.9.4"
   }
 }
